@@ -12,6 +12,7 @@ var app_routing_module_1 = require("./app-routing.module");
 var app_component_1 = require("./app.component");
 var pokemons_module_1 = require("./pokemons/pokemons.module");
 var page_not_found_component_1 = require("./page-not-found.component");
+var pokemon_type_color_pipe_1 = require("./pokemons/pokemon-type-color.pipe");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -20,7 +21,8 @@ var AppModule = /** @class */ (function () {
             imports: [platform_browser_1.BrowserModule, pokemons_module_1.PokemonsModule, app_routing_module_1.AppRoutingModule],
             declarations: [
                 app_component_1.AppComponent,
-                page_not_found_component_1.PageNotFoundComponent
+                page_not_found_component_1.PageNotFoundComponent,
+                pokemon_type_color_pipe_1.PokemonTypeColorPipe
             ],
             bootstrap: [app_component_1.AppComponent]
         })
