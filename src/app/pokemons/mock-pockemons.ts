@@ -21,7 +21,7 @@ export const POKEMONS: Pokemon[] = [
 	},
 	{
 		id: 3,
-		name: "Timocha",
+		name: "Carapuce",
 		hp: 21,
 		cp: 10000,
 		picture: "http://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png",
