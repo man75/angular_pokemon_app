@@ -11,42 +11,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var mock_pockemons_1 = require("./mock-pockemons");
+var pokemons_service_1 = require("./pokemons.service");
 var DetailPokemonComponent = /** @class */ (function () {
-    function DetailPokemonComponent(route, router) {
+    function DetailPokemonComponent(route, router, pokemonService) {
         this.route = route;
         this.router = router;
-        this.pokemons = null; // liste des pok�mons de notre application
+        this.pokemonService = pokemonService;
         this.pokemon = null; // pok�mon � afficher dans le template
     }
     // on injecte 'route' pour r�cup�rer les param�tres de l'url,
     // et 'router' pour rediriger l'utilisateur.
     DetailPokemonComponent.prototype.ngOnInit = function () {
-        // on initialise la liste de nos pok�mons
-        this.pokemons = mock_pockemons_1.POKEMONS;
-        // on r�cup�re le param�re 'id' contenu dans l'url
         var id = +this.route.snapshot.paramMap.get('id');
-        // on it�re sur le tableau de pok�mon ensuite pour trouver
-        // le pok�mon ayant le bon identifiant
-        for (var i = 0; i < this.pokemons.length; i++) {
-            // si on trouve un pok�mon avec le bon identifiant,
-            // on affecte ce pok�mon � la propri�t� du composant
-            if (this.pokemons[i].id == id) {
-                this.pokemon = this.pokemons[i];
-            }
-        }
+        this.pokemon = this.pokemonService.getPokemon(id);
     };
     // M�thode permettant de rediriger l'utilisateur
     // vers la page principale de l'application.
     DetailPokemonComponent.prototype.goBack = function () {
-        this.router.navigate(['/pokemons']);
+        window.history.back();
     };
     DetailPokemonComponent = __decorate([
         core_1.Component({
             selector: 'detail-pokemon',
-            templateUrl: './app//pokemons/detail-pokemon.component.html'
+            templateUrl: './app//pokemons/detail-pokemon.component.html',
         }),
-        __metadata("design:paramtypes", [router_1.ActivatedRoute, router_1.Router])
+        __metadata("design:paramtypes", [router_1.ActivatedRoute,
+            router_1.Router,
+            pokemons_service_1.PokemonsService])
     ], DetailPokemonComponent);
     return DetailPokemonComponent;
 }());

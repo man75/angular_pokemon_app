@@ -12,6 +12,7 @@ var list_pokemon_component_1 = require("./list-pokemon.component");
 var detail_pokemon_component_1 = require("./detail-pokemon.component");
 var border_card_directive_1 = require("./border-card.directive");
 var pokemons_routing_module_1 = require("./pokemons-routing.module");
+var pokemons_service_1 = require("./pokemons.service");
 //import { PokemonTypeColorPipe } from './pokemon-type-color.pipe';
 var PokemonsModule = /** @class */ (function () {
     function PokemonsModule() {
@@ -27,7 +28,7 @@ var PokemonsModule = /** @class */ (function () {
                 detail_pokemon_component_1.DetailPokemonComponent,
                 border_card_directive_1.BorderCardDirective
             ],
-            providers: []
+            providers: [pokemons_service_1.PokemonsService],
         })
     ], PokemonsModule);
     return PokemonsModule;
