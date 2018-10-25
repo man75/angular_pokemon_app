@@ -2,38 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Pokemon } from './pokemon';
 import { POKEMONS } from './mock-pockemons';
+import { PokemonsService } from './pokemons.service';
 
 @Component({
     selector: 'detail-pokemon',
-    templateUrl: './app//pokemons/detail-pokemon.component.html'
+    templateUrl: './app//pokemons/detail-pokemon.component.html',
+    // on dÃ©clare un fournisseur pour le service.
+     providers: [PokemonsService]
 })
 
 export class DetailPokemonComponent implements OnInit {
-    pokemons: Pokemon[] = null; // liste des pokémons de notre application
-    pokemon: Pokemon = null; // pokémon à afficher dans le template
+  
+    pokemon: Pokemon = null; // pokï¿½mon ï¿½ afficher dans le template
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
-    // on injecte 'route' pour récupérer les paramètres de l'url,
+    constructor(private route: ActivatedRoute, 
+        private router: Router,
+        private pokemonService: PokemonsService) { }
+    // on injecte 'route' pour rï¿½cupï¿½rer les paramï¿½tres de l'url,
     // et 'router' pour rediriger l'utilisateur.
     ngOnInit(): void {
-        // on initialise la liste de nos pokémons
-        this.pokemons = POKEMONS;
-        // on récupère le paramère 'id' contenu dans l'url
         let id = +this.route.snapshot.paramMap.get('id');
-        // on itère sur le tableau de pokémon ensuite pour trouver
-        // le pokémon ayant le bon identifiant
-        for (let i = 0; i < this.pokemons.length; i++) {
-            // si on trouve un pokémon avec le bon identifiant,
-            // on affecte ce pokémon à la propriété du composant
-            if (this.pokemons[i].id == id) {
-                this.pokemon = this.pokemons[i];
-            }
-        }
+        this.pokemon = this.pokemonService.getPokemon(id);
+
     }
-    // Méthode permettant de rediriger l'utilisateur
+    // Mï¿½thode permettant de rediriger l'utilisateur
     // vers la page principale de l'application.
     goBack(): void {
-        this.router.navigate(['/pokemons']);
+        window.history.back();
     }
 
 }
