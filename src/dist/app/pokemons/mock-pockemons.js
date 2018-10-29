@@ -20,8 +20,17 @@ exports.POKEMONS = [
         created: new Date()
     },
     {
+        id: 2,
+        name: "Incineroar ",
+        hp: 47,
+        cp: 6,
+        picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/727.png",
+        types: ["Feu"],
+        created: new Date()
+    },
+    {
         id: 3,
-        name: "Timocha",
+        name: "Carapuce",
         hp: 21,
         cp: 10000,
         picture: "http://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png",

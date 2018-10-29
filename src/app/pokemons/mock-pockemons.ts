@@ -18,7 +18,16 @@ export const POKEMONS: Pokemon[] = [
 		picture: "http://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
 		types: ["Feu"],
 		created: new Date()
-	},
+    },
+    {
+        id: 2,
+        name: "Incineroar ",
+        hp: 47,
+        cp: 6,
+        picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/727.png",
+        types: ["Feu"],
+        created: new Date()
+    },
 	{
 		id: 3,
 		name: "Carapuce",
